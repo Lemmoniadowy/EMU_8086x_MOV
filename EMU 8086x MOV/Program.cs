@@ -14,39 +14,39 @@ namespace EMU_8086x_MOV
 
             do
             {
-                Console.WriteLine("Assembler ver. 1.1.0");                                                  //nazwa programu i wersja
-                Console.WriteLine("Aby wykonać komendę MOV wpisz '1'");
-                Console.WriteLine("Aby opuścić program wpisz '2'");
+                Console.WriteLine("INTEL 8086x MOV Command Emulator");                                      //nazwa programu i wersja
+                Console.WriteLine("MOV COMMAND PRESS '1'");
+                Console.WriteLine("TO EXIT EMULATOR PRESS '2'");
                 Text1 = Console.ReadLine();                                                                 //wartość check
                 Int32.TryParse(Text1, out Option);                                                          //konwersja na int
                 if (Option == 1)                                                                            //jeśli opcja wynosi 1, program jest kontynuowany,
                 {                                                                                           //jeśli opcja jest 2, program się wyłącza    
-                    Console.WriteLine("Wybierz rejestr do którego chcesz zapisać wartość:");                //w przeciwnym wypadku program restartuje kombinacje
-                    Console.WriteLine("Aby wybrać rejestr AX - Naciśnij 1");
-                    Console.WriteLine("Aby wybrać rejestr BX - Naciśnij 2");
-                    Console.WriteLine("Aby wybrać rejestr CX - Naciśnij 3");
+                    Console.WriteLine("Choose register to which you want input value:");                    //w przeciwnym wypadku program restartuje kombinacje
+                    Console.WriteLine("To choose register AX - press 1");
+                    Console.WriteLine("To choose register BX - press 2");
+                    Console.WriteLine("To choose register CX - press 3");
                     rejestr = Console.ReadLine();                                                           //wartość check
                     Int32.TryParse(rejestr, out Rejestr_Conv);                                              //konwersja na int
                     if (Rejestr_Conv == 1)                                                                  //rejestr AX
                     {
-                        Console.WriteLine("Wpisz wartość rejestru AX");
+                        Console.WriteLine("Input value for register AX");
                         tAX = Console.ReadLine();
                         code01 = 0;
-                        Console.WriteLine("Wybierz rejestr do którego chcesz skopiować wartość");
-                        Console.WriteLine("Aby wybrać rejestr BX - Naciśnij 2");
-                        Console.WriteLine("Aby wybrać rejestr CX - Naciśnij 3");
+                        Console.WriteLine("Choose register where you want to copy value to");
+                        Console.WriteLine("To choose register BX - press 2");
+                        Console.WriteLine("To choose register CS - press 3");
                         rejestr_kop = Console.ReadLine();
                         Int32.TryParse(rejestr_kop, out Rejestr_Kop);
                         if (Rejestr_Kop == 2)                                                               //kopia BX
                         {
                             tBX = tAX;
-                            Console.WriteLine("Wykonywanie operacji - MOV AX BX");
+                            Console.WriteLine("Executing action - MOV AX BX");
                             code02 = 0;
                         }
                         if (Rejestr_Kop == 3)                                                               //kopia CX
                         {
                             tCX = tAX;
-                            Console.WriteLine("Wykonywanie operacji - MOV AX CX");
+                            Console.WriteLine("Executing action - MOV AX CX");
                             code02 = 0;
                         }
                         if (Rejestr_Kop != 2 && Rejestr_Kop != 3)
@@ -54,24 +54,24 @@ namespace EMU_8086x_MOV
                     }
                     if (Rejestr_Conv == 2)                                                                  //rejestr BX
                     {
-                        Console.WriteLine("Wpisz wartość rejestru BX");
+                        Console.WriteLine("Input value for register BX");
                         tBX = Console.ReadLine();
                         code01 = 0;
-                        Console.WriteLine("Wybierz rejestr do którego chcesz skopiować wartość");
-                        Console.WriteLine("Aby wybrać rejestr AX - Naciśnij 1");
-                        Console.WriteLine("Aby wybrać rejestr CX - Naciśnij 3");
+                        Console.WriteLine("Choose register where you want to copy value to");
+                        Console.WriteLine("To choose register AX - press 1");
+                        Console.WriteLine("To choose register CX - press 3");
                         rejestr_kop = Console.ReadLine();
                         Int32.TryParse(rejestr_kop, out Rejestr_Kop);
                         if (Rejestr_Kop == 1)                                                               //kopia AX
                         {
                             tAX = tBX;
-                            Console.WriteLine("Wykonywanie operacji - MOV BX AX");
+                            Console.WriteLine("Executing action - MOV BX AX");
                             code02 = 0;
                         }
                         if (Rejestr_Kop == 3)                                                               //kopia CX
                         {
                             tCX = tBX;
-                            Console.WriteLine("Wykonywanie operacji - MOV BX CX");
+                            Console.WriteLine("Executing action - MOV BX CX");
                             code02 = 0;
                         }
                         if (Rejestr_Kop != 1 && Rejestr_Kop != 3)
